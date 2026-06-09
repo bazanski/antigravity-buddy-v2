@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antigravity Buddy v2 Simulator</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="glass-container">
+    <div class="header">
+      <div class="status-badge" id="status-text">DISCONNECTED</div>
+      <h1>Antigravity Buddy v2</h1>
+    </div>
+
+    <!-- Tab Controls -->
+    <div class="tabs-nav">
+      <button class="tab-btn active" id="btn-mascot" onclick="switchTab('mascot')">Companion</button>
+      <button class="tab-btn" id="btn-console" onclick="switchTab('console')">Console Log <span class="console-badge-count" id="console-count">0</span></button>
+    </div>
+
+    <!-- Tab 1: Companion View -->
+    <div class="tab-content" id="tab-mascot">
+      <!-- Liquid SVG Morphing Blob Mascot -->
+      <div class="mascot-container">
+        <svg class="blob-svg" viewBox="0 0 200 200">
+          <defs>
+            <linearGradient id="blob-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="var(--gradient-start)" />
+              <stop offset="100%" stop-color="var(--gradient-end)" />
+            </linearGradient>
+          </defs>
+          <path id="blob-path" d="M100,20 C140,20 180,60 180,100 C180,140 140,180 100,180 C60,180 20,140 20,100 C20,60 60,20 100,20 Z" fill="url(#blob-gradient)"></path>
+        </svg>
+        <div class="mascot-face" id="mascot-eye-layout">
+          <div class="eye left"></div>
+          <div class="eye right"></div>
+        </div>
+      </div>
+
+      <!-- Active Tool Permission Dialog overlay -->
+      <div class="prompt-box hidden" id="prompt-panel">
+        <h3>⚠️ Action Approval Required</h3>
+        <p class="tool-name" id="tool-name">executing run_command</p>
+        <div class="hint-box" id="tool-hint">git commit -m "update"</div>
+        <div class="opts-carousel" id="opts-carousel" style="display:none">
+          <button class="opt-arrow" id="opt-prev" onclick="cycleOption(-1)">◀</button>
+          <div class="opt-label" id="opt-label">Approve</div>
+          <button class="opt-arrow" id="opt-next" onclick="cycleOption(1)">▶</button>
+        </div>
+        <div class="opt-index-hint" id="opt-index-hint" style="display:none"></div>
+        <div class="btn-group" id="btn-group-binary">
+          <button class="btn btn-allow" onclick="resolvePrompt('allow')">Approve (BOOT)</button>
+          <button class="btn btn-deny" onclick="resolvePrompt('deny')">Cancel</button>
+        </div>
+        <div class="btn-group" id="btn-group-multi" style="display:none">
+          <button class="btn btn-allow" onclick="resolvePromptMulti()">Confirm Selection</button>
+          <button class="btn btn-deny" onclick="resolvePrompt('deny')">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab 2: Console Log View -->
+    <div class="tab-content hidden" id="tab-console">
+      <div class="console-wrapper">
+        <div class="console-header-actions">
+          <button class="btn-clear" onclick="clearLogs()">Clear Console</button>
+        </div>
+        <div class="console-logs" id="console-logs">
+          <div class="console-placeholder">Awaiting hook telemetry...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "name": "Sync Start",
+        "type": "command",
+        "command": "python \"C:/Users/bazba/Sync/Personal projects/antigravity-buddy-v2/hooks/hook_handler.py\""
+      }
+    ],
+    "BeforeAgent": [
+      {
+        "name": "State Planning",
+        "type": "command",
+        "command": "python \"C:/Users/bazba/Sync/Personal projects/antigravity-buddy-v2/hooks/hook_handler.py\""
+      }
+    ],
+    "BeforeModel": [
+      {
+        "name": "State Thinking",
+        "type": "command",
+        "command": "python \"C:/Users/bazba/Sync/Personal projects/antigravity-buddy-v2/hooks/hook_handler.py\""
+      }
+    ],
+    "BeforeTool": [
+      {
+        "name": "Active Shield Interceptor",
+        "type": "command",
+        "command": "python \"C:/Users/bazba/Sync/Personal projects/antigravity-buddy-v2/hooks/hook_handler.py\"",
+        "matcher": "run_command|write_file|multi_replace_file_content"
+      }
+    ],
+    "AfterTool": [
+      {
+        "name": "State Post-Execution",
+        "type": "command",
+        "command": "python \"C:/Users/bazba/Sync/Personal projects/antigravity-buddy-v2/hooks/hook_handler.py\""
+      }
+    ],
+    "AfterAgent": [
+      {
+        "name": "State Concluded",
+        "type": "command",
+        "command": "python \"C:/Users/bazba/Sync/Personal projects/antigravity-buddy-v2/hooks/hook_handler.py\""
+      }
+    ]
+  }
+}

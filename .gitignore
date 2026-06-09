@@ -1,0 +1,8 @@
+esp32-wifi-fw/.pio/
+__pycache__/
+*.pyc
+*.pyo
+*.log
+test_*.txt
+.DS_Store
+Thumbs.db
